@@ -1,0 +1,96 @@
+﻿@model IEnumerable<TimeTracker.Models.Dto.EffortDto>
+
+@{
+	ViewData["Title"] = "Index";
+}
+<div class="row">
+	<div class="col">
+		<h1 class="d-inline">Effort</h1>
+		<a asp-action="Create" class="btn btn-sm btn-primary d-inline mx-2">Create New</a>
+	</div>
+
+</div>
+
+<table class="table">
+	<thead>
+		<tr>
+
+			<th>
+				@Html.DisplayNameFor(model => model.AssignmentDescription)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.WorkDate)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.StartTime)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.EndTime)
+			</th>
+			@*<th>
+				@Html.DisplayNameFor(model => model.MinutesUsed)
+			</th>*@
+			<th>
+				@Html.DisplayNameFor(model => model.HoursUsed)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Description)
+			</th>
+			@*<th>
+				@Html.DisplayNameFor(model => model.Created)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.DateM)
+			</th>*@
+			<th>
+				@Html.DisplayNameFor(model => model.IsActive)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+
+				<td>
+					<a href="@item.CompanyLink" target="_blank">@item.AssignmentDescription</a>
+
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.WorkDate)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.StartTime)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.EndTime)
+				</td>
+				@*<td>
+					@Html.DisplayFor(modelItem => item.MinutesUsed)
+				</td>*@
+				<td>
+					@Html.DisplayFor(modelItem => item.HoursUsed)
+				</td>
+				<td>
+					<a asp-action="Details" asp-route-id="@item.Id">@item.Description</a>
+					@*@Html.DisplayFor(modelItem => item.Description)*@
+				</td>
+				@*<td>
+					@Html.DisplayFor(modelItem => item.Created)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DateM)
+				</td>*@
+				<td>
+					@Html.DisplayFor(modelItem => item.IsActive)
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new {  id=item.Id  }, new {@class = "btn btn-sm btn-secondary"})
+					@*@Html.ActionLink("Details", "Details", new {id=item.Id  }, new {@class = "btn btn-sm btn-light"})*@
+					@*@Html.ActionLink("Del", "Delete", new { id=item.Id  }, new {@class = "btn btn-sm btn-danger"})*@
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

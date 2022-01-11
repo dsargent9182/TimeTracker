@@ -1,0 +1,93 @@
+﻿@model IEnumerable<TimeTracker.Models.Dto.AssignmentDto>
+
+@{
+	ViewData["Title"] = "Index";
+}
+<div class="row mb-3">
+	<div class="col">
+		<h1 class="d-inline">Assignment</h1>
+		<a asp-action="Create" class="btn btn-sm btn-primary d-inline mx-2">Create New</a>
+	</div>
+</div>
+
+<table class="table">
+	<thead>
+		<tr>
+			@*<th>
+				@Html.DisplayNameFor(model => model.Id)
+				</th>
+				<th>
+				@Html.DisplayNameFor(model => model.ContractId)
+				</th>*@
+			<th>
+				@Html.DisplayNameFor(model => model.CompanyId)
+
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Description)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.HoursAvailable)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.HoursUsed)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.HoursRemaining)
+			</th>
+			@*<th>
+				@Html.DisplayNameFor(model => model.Created)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.DateM)
+			</th>*@
+			<th>
+				@Html.DisplayNameFor(model => model.IsActive)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				@* <td>
+					@Html.DisplayFor(modelItem => item.Id)
+					</td>
+					<td>
+					@Html.DisplayFor(modelItem => item.ContractId)
+					</td>*@
+				<td>
+					@Html.DisplayFor(modelItem => item.CompanyId)
+					
+				</td>
+				<td>
+					<a asp-action="Details" asp-route-id="@item.Id">@item.Description</a>
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.HoursAvailable)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.HoursUsed)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.HoursRemaining)
+				</td>
+				@*<td>
+					@Html.DisplayFor(modelItem => item.Created)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DateM)
+				</td>*@
+				<td>
+					@Html.DisplayFor(modelItem => item.IsActive)
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new {  id = item.Id  }, new {@class = "btn btn-sm btn-secondary"})
+					@*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new {@class = "btn btn-sm btn-danger"})*@
+					<a asp-action="Create" asp-controller="Effort" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Add Effort</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

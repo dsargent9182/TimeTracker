@@ -1,0 +1,70 @@
+﻿@model TimeTracker.Models.Dto.EffortDto
+
+@{
+	ViewData["Title"] = "Create";
+}
+
+<h4>Create Effort</h4>
+
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Create">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+			@*<input asp-for="AssignmentId" type="hidden" />*@
+			@*<div class="form-group mb-3">
+				<label asp-for="AssignmentDescription" class="control-label"></label>
+				<input asp-for="AssignmentDescription" class="form-control" disabled="disabled" />
+				<span asp-validation-for="AssignmentDescription" class="text-danger"></span>
+			</div>*@
+			<div class="form-group mb-3">
+				@Html.DropDownListFor(item => item.AssignmentId,Model.AssignmentSelectList,"Select Assignment")
+				<span asp-validation-for="AssignmentSelectList" class="text-danger"></span>
+			</div>
+
+			<div class="form-group mb-3">
+				<label asp-for="WorkDate" class="control-label"></label>
+				<input asp-for="WorkDate" class="form-control" />
+				<span asp-validation-for="WorkDate" class="text-danger"></span>
+			</div>
+			<div class="form-group mb-3">
+				<label asp-for="StartTime" class="control-label"></label>
+				<input asp-for="StartTime" class="form-control" />
+				<span asp-validation-for="StartTime" class="text-danger"></span>
+			</div>
+			<div class="form-group mb-3">
+				<label asp-for="EndTime" class="control-label"></label>
+				<input asp-for="EndTime" class="form-control" />
+				<span asp-validation-for="EndTime" class="text-danger"></span>
+			</div>
+			@*    <div class="form-group">
+				<label asp-for="MinutesUsed" class="control-label"></label>
+				<input asp-for="MinutesUsed" class="form-control" />
+				<span asp-validation-for="MinutesUsed" class="text-danger"></span>
+				</div>*@
+			<div class="form-group mb-3">
+				<label asp-for="Description" class="control-label"></label>
+				<input asp-for="Description" class="form-control" />
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<input type="submit" value="Create" class="btn btn-sm btn-primary" />
+					<a asp-action="Index" class="btn btn-sm btn-secondary">Back to List</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+	alert('hello');
+</script>
+
+@section Scripts {
+    @{
+	await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

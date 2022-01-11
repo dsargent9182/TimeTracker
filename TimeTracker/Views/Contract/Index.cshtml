@@ -1,0 +1,83 @@
+﻿@model IEnumerable<TimeTracker.Models.Dto.ContractDto>
+
+@{
+	ViewData["Title"] = "Index";
+}
+<div class="row mb-3">
+	<div class="col">
+		<h1 class="d-inline">Contracts</h1>
+		<a class = "btn btn-sm btn-primary d-line mx-2" asp-action="Create">Create New</a>
+	</div>
+</div>
+
+
+<table class="table">
+	<thead>
+		<tr>
+
+			<th>
+				@Html.DisplayNameFor(model => model.CompanyName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Description)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.HourlyRate)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.StartDate)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.EndDate)
+			</th>
+			@*<th>
+				@Html.DisplayNameFor(model => model.Created)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.DateM)
+			</th>*@
+			<th>
+				@Html.DisplayNameFor(model => model.IsActive)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.CompanyName)
+				</td>
+				<td>
+					<a asp-action="Details" asp-route-id="@item.Id">@item.Description</a>
+					@*@Html.DisplayFor(modelItem => item.Description)*@
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.HourlyRate)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.StartDate)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.EndDate)
+				</td>
+				@*<td>
+					@Html.DisplayFor(modelItem => item.Created)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DateM)
+				</td>*@
+				<td>
+					@Html.DisplayFor(modelItem => item.IsActive)
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new {  id= item.Id  }, new {@class = "btn btn-sm btn-secondary"}) 
+					@*@Html.ActionLink("Details", "Details", new { item.Id }, new {@class = "btn btn-sm btn-light"}) *@
+					@*@Html.ActionLink("Delete", "Delete", new { item.Id }, new {@class = "btn btn-sm btn-danger"})*@
+					<a asp-action="Create" asp-controller="Assignment" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Add Assignment</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
