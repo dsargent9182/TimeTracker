@@ -11,8 +11,8 @@ Certificates/
 *.vscode
 
 # ignore min is commented out, excluse .min and .map files
-*.min.css
-*.min.js
+#*.min.css
+#*.min.js
 *.map
 
 # User-specific files (MonoDevelop/Xamarin Studio)
