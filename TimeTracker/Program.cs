@@ -8,17 +8,25 @@ using Microsoft.AspNetCore.Authorization;
 using OfficeOpenXml;
 using System.Globalization;
 using TimeTracker.Models;
+using TimeTracker.Configuration;
+using Lib.Common.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+#if DEBUG
+DockerHelpers.UpdateCaCertificates();
+
+#endif
+
+TimeTrackerConfiguration timeTrackerConfiguration = builder.Configuration.Get<TimeTrackerConfiguration>();
+builder.Services.AddSingleton<ITimeTrackerConfiguration>(timeTrackerConfiguration);
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));builder.Services.AddDbContext<ApplicationDbContext>(options =>
-	options.UseSqlServer(connectionString));
+    options.UseSqlServer(timeTrackerConfiguration.ConnectionString));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddSingleton<DapperContext>(new DapperContext(connectionString));
+builder.Services.AddSingleton<DapperContext>(new DapperContext(timeTrackerConfiguration.ConnectionString));
 builder.Services.AddSingleton<ITimeTrackerRepository, TimeTrackerRepository>();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -43,7 +51,7 @@ else
 	app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();

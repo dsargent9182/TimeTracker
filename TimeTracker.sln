@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker", "TimeTracker\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{DE5C5320-2E6C-4FD5-A6A2-FCB4F16CB852}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobManager", "JobManager\JobManager.csproj", "{86D4CB66-562C-4CA4-9157-A426EA6200B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobManager", "JobManager\JobManager.csproj", "{86D4CB66-562C-4CA4-9157-A426EA6200B9}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{281604F6-B57B-44EB-8ECC-3353A697B15C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib.Common.Services", "..\Lib.Common.Services\Lib.Common.Services.csproj", "{7DA00D11-190B-44A9-BD45-6D52951209CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{86D4CB66-562C-4CA4-9157-A426EA6200B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86D4CB66-562C-4CA4-9157-A426EA6200B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86D4CB66-562C-4CA4-9157-A426EA6200B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{281604F6-B57B-44EB-8ECC-3353A697B15C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{281604F6-B57B-44EB-8ECC-3353A697B15C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{281604F6-B57B-44EB-8ECC-3353A697B15C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{281604F6-B57B-44EB-8ECC-3353A697B15C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DA00D11-190B-44A9-BD45-6D52951209CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DA00D11-190B-44A9-BD45-6D52951209CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DA00D11-190B-44A9-BD45-6D52951209CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DA00D11-190B-44A9-BD45-6D52951209CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

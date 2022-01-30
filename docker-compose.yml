@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  jobmanager:
+    image: ${DOCKER_REGISTRY-}jobmanager
+    build:
+      context: .
+      dockerfile: JobManager/Dockerfile
+    container_name: timejobmanager
+    env_file:
+        - timejobmanager.debug.env
+    networks: 
+        - default
+
+  timetracker:
+    image: ${DOCKER_REGISTRY-}timetracker
+    build:
+      context: .
+      dockerfile: TimeTracker/Dockerfile
+    container_name: timetracker
+    environment:
+      - VIRTUAL_HOST=timetracker.check.dev
+    volumes:
+       - './certs:/usr/local/share/ca-certificates'
+    env_file:
+        - timetracker.debug.env
+    networks:
+        - default
+networks:
+  default:
+    external:
+        name: nginx-net
+
