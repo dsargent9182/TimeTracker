@@ -9,14 +9,14 @@ using OfficeOpenXml;
 using System.Globalization;
 using TimeTracker.Models;
 using TimeTracker.Configuration;
-using Lib.Common.Services;
+//using Lib.Common.Services;
+//using Lib;
 
 var builder = WebApplication.CreateBuilder(args);
 
-#if DEBUG
-DockerHelpers.UpdateCaCertificates();
-
-#endif
+//#if DEBUG
+//DockerHelpers.UpdateCaCertificates();
+//#endif
 
 TimeTrackerConfiguration timeTrackerConfiguration = builder.Configuration.Get<TimeTrackerConfiguration>();
 builder.Services.AddSingleton<ITimeTrackerConfiguration>(timeTrackerConfiguration);
